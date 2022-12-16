@@ -1,0 +1,46 @@
+<head>
+  <style>
+    body {
+      background-color: var(--figma-color-bg);
+      color: var(--figma-color-text);
+    }
+  </style>
+</head>
+
+<body>
+  <link rel="stylesheet" href="ui.css">
+  <h2>Chart Creator</h2>
+  <p>
+    Values:
+    <textarea id="textbox" rows="8" cols="40" placeholder="1, 2, 3," value="1, 2, 3, 4"></textarea>
+  </p>
+  <b id="errors"></b>
+  <p><button>Create Line Chart</button></p>
+  <script>
+
+document.querySelector('button').onclick = () => {
+    const text = document.querySelector('#textbox').value
+
+    let numbers = text.split(',').map(x => +x)
+    if (numbers.length < 2) {
+      showError('Error: Must have at least two values');
+      return
+    }
+    if (numbers.some(x => isNaN(x))) {
+      showError('Error: All values must be numbers');
+      return
+    }
+
+    parent.postMessage({ pluginMessage: numbers }, '*')
+  }
+
+  showError = errorMessage => {
+    document.querySelector('#errors').textContent = errorMessage
+  }
+
+  </script>
+
+</body>
+
+
+<!-- style="color: var(--figma-color-text); background-color: var(--figma-color-bg); -->

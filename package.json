@@ -1,0 +1,20 @@
+{
+  "name": "soliev",
+  "version": "1.0.0",
+  "description": "Your Figma Plugin",
+  "main": "code.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "npm run build -- --watch"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.57.1",
+    "@types/node-fetch": "^2.6.2",
+    "typescript": "*"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
